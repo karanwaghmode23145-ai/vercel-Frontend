@@ -1,0 +1,48 @@
+.sale-products-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sale-products-heading {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.sale-product-card-wrapper {
+  padding: 10px;
+}
+
+.sale-product-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+}
+
+.sale-product-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.sale-product-card h3 {
+  font-size: 1.1rem;
+  margin: 10px 0 5px 0;
+}
+
+.sale-product-card p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Slick dots customization */
+.slick-dots li button:before {
+  color: #333;
+}
+
+.slick-dots li.slick-active button:before {
+  color: red;
+}

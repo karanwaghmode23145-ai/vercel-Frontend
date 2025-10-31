@@ -1,0 +1,44 @@
+.special-products-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.special-products-heading {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.special-products-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.special-product-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  flex: 1 1 200px;
+  max-width: 250px;
+}
+
+.special-product-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.special-product-card h3 {
+  font-size: 1.1rem;
+  margin: 10px 0 5px 0;
+}
+
+.special-product-card p {
+  font-size: 1rem;
+  color: #555;
+}

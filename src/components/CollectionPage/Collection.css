@@ -1,0 +1,20 @@
+.collection-page {
+  min-height: 80vh;
+}
+
+.card-img-top {
+  transition: transform 0.3s ease;
+}
+
+.card-img-top:hover {
+  transform: scale(1.05);
+}
+
+.filter-toggle {
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.loading, .error {
+  font-size: 1.2rem;
+}

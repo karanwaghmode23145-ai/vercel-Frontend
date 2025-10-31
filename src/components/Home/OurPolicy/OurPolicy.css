@@ -1,0 +1,51 @@
+.our-policy-container {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  text-align: center;
+  padding: 60px 20px;
+  color: #4a4a4a;
+  flex-wrap: wrap;
+}
+
+.policy-card {
+  max-width: 200px;
+}
+
+.policy-image {
+  width: 48px;
+  margin: 0 auto 20px auto;
+  transition: transform 0.15s ease;
+}
+
+.policy-image:hover {
+  transform: scaleX(-1);
+}
+
+.policy-title {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.policy-description {
+  color: #888;
+  font-size: 14px;
+}
+
+/* Hide elements on small screens */
+.hidden-sm {
+  display: none;
+}
+
+@media(min-width: 640px) {
+  .hidden-sm {
+    display: block;
+  }
+}
+
+/* Responsive text sizes */
+@media(min-width: 768px) {
+  .policy-description {
+    font-size: 16px;
+  }
+}

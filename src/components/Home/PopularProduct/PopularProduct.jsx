@@ -6,29 +6,35 @@ const PopularProducts = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // ✅ Backend se product fetch karne ka function
   const fetchProducts = async () => {
+    console.log("🟢 Fetching products from backend...");
     try {
-      const res = await fetch("http://localhost:2000/api/products");
+      const res = await fetch("http://localhost:2000/api/products/");
+      console.log("📡 Response object:", res);
+
       const data = await res.json();
+      console.log("📦 Parsed JSON data:", data);
 
       if (!res.ok) throw new Error(data.message || "Failed to fetch products");
 
-      setProducts(data.data); // ✅ Backend me data.data array milta hai
+      setProducts(data.data);
+      console.log("✅ Products saved to state:", data.data);
     } catch (error) {
-      console.error("Error fetching products:", error.message);
+      console.error("🚨 Error fetching products:", error.message);
     } finally {
+      // ✅ Always stop loading (success or error dono case me)
       setLoading(false);
+      console.log("⏹️ Loading finished.");
     }
   };
 
-  // ✅ Component mount hone par data load karo
   useEffect(() => {
+    console.log("🧠 Component mounted — calling fetchProducts()");
     fetchProducts();
   }, []);
 
-  // ✅ Loading spinner
   if (loading) {
+    console.log("⏳ Still loading products...");
     return (
       <div className="d-flex justify-content-center align-items-center my-5">
         <div className="spinner-border text-dark" role="status">
@@ -38,6 +44,8 @@ const PopularProducts = () => {
     );
   }
 
+  console.log("🎨 Rendering products on screen:", products);
+
   return (
     <div className="container my-5">
       <h2 className="text-center fw-bold mb-5">Popular Products</h2>
@@ -46,26 +54,17 @@ const PopularProducts = () => {
         {products.slice(0, 8).map((product) => (
           <div key={product._id} className="col-12 col-sm-6 col-md-4 col-lg-3">
             <div className="card h-100 shadow-sm border-0">
-              {/* ✅ Product Image */}
               <img
                 src={product.image}
                 alt={product.name}
                 className="card-img-top rounded-top"
-                style={{
-                  height: "220px",
-                  objectFit: "cover",
-                }}
+                style={{ height: "220px", objectFit: "cover" }}
               />
-
               <div className="card-body d-flex flex-column">
-                {/* ✅ Product Name */}
                 <h6 className="card-title fw-semibold">{product.name}</h6>
 
                 <div className="mt-auto">
-                  {/* ✅ Product Price */}
                   <p className="mb-1 text-muted">${product.price}</p>
-
-                  {/* ✅ Product Rating & Review Count */}
                   <p className="small text-warning mb-2">
                     ⭐ {product.rating?.toFixed(1) || "0.0"}{" "}
                     <span className="text-secondary">
@@ -76,8 +75,6 @@ const PopularProducts = () => {
                       reviews)
                     </span>
                   </p>
-
-                  {/* ✅ View Product Button */}
                   <Link
                     to={`/product/${product._id}`}
                     className="btn btn-dark w-100"

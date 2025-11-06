@@ -1,46 +1,80 @@
-import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
 import "./Signup.css";
+import {useNavigate} from "react-router-dom"
+import toast, { Toaster } from "react-hot-toast";
+
+
 
 const SignupPage = () => {
+  
+  //navgation
   const navigate = useNavigate();
 
-  // Form state
+
+  // State 
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [mobile, setMobile] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e) =>{
+    e.preventDefault(); 
+    console.log("🟢 Form submitted!");
+
+    // show loading
     setIsLoading(true);
 
+    // Check form values
+    console.log("📋 Form data:", {
+      fullName,
+      email,
+      mobile,
+      password,
+    });
+
     try {
-      const res = await fetch("http://localhost:2000/api/users/register", {
+
+       console.log("📤 Sending data to API: http://localhost:2000/api/users/register");
+
+        const res = await fetch("http://localhost:2000/api/users/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ fullName, email, mobile, password }),
       });
 
+       // 📥 Get API response
       const data = await res.json();
+      console.log("📥 API Response Received:", data);
 
-      if (!res.ok) throw new Error(data.message || "Registration failed");
+       // ❌ If response not OK
+      if (!res.ok) {
+        console.log("❌ Registration failed:", data.message);
+        throw new Error(data.message || "Registration failed");
+      }
 
+       console.log("✅ User registered successfully!");
       toast.success("Account created successfully!");
-      // Redirect to login page
+
+      // 🔁 Redirect user to login page
+      console.log("➡️ Redirecting to /login ...");
       navigate("/login");
+      
     } catch (error) {
+       console.log("❌ Error occurred:", error.message);
       toast.error(error.message || "Something went wrong");
-    } finally {
-      setIsLoading(false);
     }
-  };
+
+
+
+  }
+  
+
+
 
   return (
     <div className="signup-container">
-      <Toaster position="top-right" reverseOrder={false} />
+       <Toaster position="top-right" reverseOrder={false} />
       <div className="signup-box">
         <div className="signup-header">
           <h1>Create Account</h1>
@@ -48,12 +82,12 @@ const SignupPage = () => {
         </div>
 
         <form className="signup-form" onSubmit={handleSubmit}>
-          {/* Name */}
+          {/* Full Name */}
           <div className="form-group">
-            <label htmlFor="name">Full Name</label>
+            <label htmlFor="fullName">Full Name</label>
             <input
-              id="name"
-              name="name"
+              id="fullName"
+              name="fullName"
               type="text"
               placeholder="John Doe"
               value={fullName}
@@ -105,20 +139,20 @@ const SignupPage = () => {
             />
           </div>
 
-          {/* Sign Up Button */}
+          {/* Button */}
           <div className="form-group">
-            <button type="submit" className="signup-btn" disabled={isLoading}>
-              {isLoading ? "Creating..." : "Sign Up"}
+            <button type="submit" className="signup-btn">
+              Sign Up
             </button>
           </div>
         </form>
 
-        {/* Back to login link */}
+        {/* Login Link */}
         <p className="login-link">
           Already have an account?{" "}
-          <Link to="/login" className="link-btn">
+          <a href="/login" className="link-btn">
             Login
-          </Link>
+          </a>
         </p>
       </div>
     </div>

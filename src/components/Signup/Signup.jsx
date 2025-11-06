@@ -37,7 +37,7 @@ const SignupPage = () => {
 
        console.log("📤 Sending data to API: http://localhost:2000/api/users/register");
 
-        const res = await fetch("http://localhost:2000/api/users/register", {
+        const res = await fetch("https://vercel-backend-two-flame.vercel.app/api/users/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ fullName, email, mobile, password }),

@@ -9,7 +9,7 @@ const CartPage = () => {
   useEffect(() => {
     const fetchCart = async () => {
       try {
-        const res = await fetch("http://localhost:2000/api/cart/");
+        const res = await fetch("https://vercel-backend-two-flame.vercel.app/api/cart/");
         if (!res.ok) throw new Error("Failed to fetch cart data");
         const data = await res.json();
         setCartItems(data);

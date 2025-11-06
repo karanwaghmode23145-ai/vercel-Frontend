@@ -23,7 +23,7 @@ const Header = () => {
     const fetchWishlist = async () => {
       if (!userEmail) return;
       try {
-        const res = await fetch(`http://localhost:2000/api/wishlist/${userEmail}`);
+        const res = await fetch(`https://vercel-backend-two-flame.vercel.app/api/wishlist/${userEmail}`);
         const data = await res.json();
         if (res.ok) {
           setWishlistCount(data.data.length);

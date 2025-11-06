@@ -9,7 +9,7 @@ const SpecialProducts = () => {
   // Fetch products from backend
   const fetchProducts = async () => {
     try {
-      const res = await fetch("http://localhost:2000/api/products");
+      const res = await fetch("https://vercel-backend-two-flame.vercel.app/api/products");
       const data = await res.json();
 
       if (!res.ok) throw new Error(data.message || "Failed to fetch products");

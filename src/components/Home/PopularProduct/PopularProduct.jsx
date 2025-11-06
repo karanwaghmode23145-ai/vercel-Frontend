@@ -9,7 +9,8 @@ const PopularProducts = () => {
   const fetchProducts = async () => {
     console.log("🟢 Fetching products from backend...");
     try {
-      const res = await fetch("http://localhost:2000/api/products/");
+      const res = await fetch("https://vercel-backend-two-flame.vercel.app/api/products/");
+      
       console.log("📡 Response object:", res);
 
       const data = await res.json();

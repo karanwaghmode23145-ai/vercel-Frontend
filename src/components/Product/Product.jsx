@@ -29,7 +29,7 @@ const ProductPage = () => {
     const fetchProduct = async () => {
       try {
         setLoading(true);
-        const res = await fetch(`http://localhost:2000/api/products/${id}`);
+        const res = await fetch(`https://vercel-backend-two-flame.vercel.app/api/products/${id}`);
         const data = await res.json();
         if (!res.ok) throw new Error(data.message || "Product not found");
 
@@ -53,7 +53,7 @@ const ProductPage = () => {
     }
 
     try {
-      const res = await fetch("http://localhost:2000/api/cart", {
+      const res = await fetch("https://vercel-backend-two-flame.vercel.app/api/cart", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -83,7 +83,7 @@ const ProductPage = () => {
     }
 
     try {
-      const res = await fetch("http://localhost:2000/api/wishlist", {
+      const res = await fetch("https://vercel-backend-two-flame.vercel.app/api/wishlist", {
         method: isWishlisted ? "DELETE" : "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

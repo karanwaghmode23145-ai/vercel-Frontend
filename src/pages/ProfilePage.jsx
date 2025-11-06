@@ -26,7 +26,7 @@ const ProfilePage = () => {
 
       console.log("📡 Fetching user:", loggedInEmail);
       const res = await fetch(
-        `http://localhost:2000/api/users/profile?email=${loggedInEmail}`
+        `https://vercel-backend-two-flame.vercel.app/api/users/profile?email=${loggedInEmail}`
       );
       const data = await res.json();
 

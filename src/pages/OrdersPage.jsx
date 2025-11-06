@@ -20,7 +20,7 @@ const OrdersPage = () => {
 
     try {
       const res = await fetch(
-        `http://localhost:2000/api/orders?email=${user.email}`
+        `https://vercel-backend-two-flame.vercel.app/api/orders?email=${user.email}`
       );
       const data = await res.json();
 
@@ -35,7 +35,7 @@ const OrdersPage = () => {
 
   const markAsCompleted = async (id) => {
     try {
-      const res = await fetch(`http://localhost:2000/api/orders/${id}/status`, {
+      const res = await fetch(`https://vercel-backend-two-flame.vercel.app/api/orders/${id}/status`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status: "Completed" }),

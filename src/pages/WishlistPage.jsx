@@ -9,7 +9,7 @@ const WishlistPage = () => {
   useEffect(() => {
     const fetchWishlist = async () => {
       try {
-        const res = await fetch(`http://localhost:2000/api/wishlist/${userEmail}`);
+        const res = await fetch(`https://vercel-backend-two-flame.vercel.app/api/wishlist/${userEmail}`);
         const data = await res.json();
         if (!res.ok) throw new Error(data.error || "Failed to fetch wishlist");
         console.log("✅ Wishlist fetched:", data.data);

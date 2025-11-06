@@ -18,7 +18,7 @@ const Hero = () => {
             <div className="hero-container">
                 {/* Left Content */}
                 <div className="hero-content">
-                    <h1 className="hero-title">
+                    <h1 className="hero-title text-center">
                         Stunning <br />
                         <span className="hero-highlight">
                             <svg
@@ -33,7 +33,7 @@ const Hero = () => {
                                     fill="#CC0D39"
                                 ></path>
                             </svg>
-                            Jewelry
+                            T-Shirts
                         </span>
                         <br />
                         <span>Shine Bright</span>
@@ -45,7 +45,7 @@ const Hero = () => {
                         <span className="hero-free">Free shipping</span> on all orders —
                         always.
                     </p>
-             <Link to="/collection" className="shop-btn">
+             <Link to="/collection" className="shop-btn mt-1 mb-3">
           <span>Shop Now</span>
           <ShoppingBag className="shop-icon" />
         </Link>
